@@ -25,6 +25,7 @@ import 'package:pixez/models/novel_recom_response.dart';
 import 'package:pixez/page/novel/component/novel_bookmark_button.dart';
 import 'package:pixez/page/novel/component/novel_lighting_store.dart';
 import 'package:pixez/page/novel/viewer/novel_viewer.dart';
+import 'package:pixez/utils/haptic_util.dart';
 import 'package:pixez/exts.dart';
 
 class NovelLightingList extends StatefulWidget {
@@ -107,6 +108,7 @@ class _NovelLightingListState extends State<NovelLightingList> {
           padding: const EdgeInsets.symmetric(horizontal: 4.0),
           child: InkWell(
             onTap: () {
+              HapticUtil.selectionClick();
               Navigator.of(context, rootNavigator: true).push(MaterialPageRoute(
                   builder: (BuildContext context) => NovelViewerPage(
                         id: novel.id,

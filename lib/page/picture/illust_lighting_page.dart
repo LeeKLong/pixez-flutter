@@ -479,6 +479,7 @@ class _IllustVerticalPageState extends State<IllustVerticalPage>
                   .toList();
               return InkWell(
                 onTap: () {
+                  HapticUtil.selectionClick();
                   Leader.push(
                     context,
                     PictureListPage(
@@ -489,6 +490,7 @@ class _IllustVerticalPageState extends State<IllustVerticalPage>
                   );
                 },
                 onLongPress: () async {
+                  HapticUtil.heavy();
                   if (userSetting.longPressSaveConfirm) {
                     final result = await showDialog(
                       context: context,
@@ -981,6 +983,7 @@ class _IllustVerticalPageState extends State<IllustVerticalPage>
   }
 
   Future<void> _pressSave(Illusts illust, int index) async {
+    HapticUtil.heavy();
     if (userSetting.illustDetailSaveSkipLongPress) {
       saveStore.saveImage(illust, index: index);
       await _autoBookmarkAfterSave(illust);

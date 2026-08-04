@@ -127,13 +127,13 @@ abstract class _SaveStoreBase with Store {
   void listenBehavior(SaveStream stream) {
     switch (stream.state) {
       case SaveState.SUCCESS:
-        HapticUtil.light();
+        HapticUtil.success(minIntervalMs: 300);
         Toaster.downloadOk(
           "${stream.data.title} (p${stream.index ?? 0}) ${I18n.of(ctx!).saved}",
         );
         break;
       case SaveState.JOIN:
-        HapticUtil.medium();
+        HapticUtil.light(minIntervalMs: 200);
         BotToast.showCustomText(
           onlyOne: true,
           duration: Duration(seconds: 1),

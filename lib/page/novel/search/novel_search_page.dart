@@ -30,6 +30,7 @@ import 'package:pixez/page/novel/series/novel_series_page.dart';
 import 'package:pixez/page/novel/user/novel_users_page.dart';
 import 'package:pixez/page/novel/viewer/novel_viewer.dart';
 import 'package:pixez/page/picture/illust_lighting_page.dart';
+import 'package:pixez/utils/haptic_util.dart';
 
 class NovelSearchPage extends StatefulWidget {
   @override
@@ -203,6 +204,7 @@ class _NovelSearchPageState extends State<NovelSearchPage> {
                     .isNotEmpty)
                   return InkWell(
                     onTap: () {
+                      HapticUtil.heavy();
                       tagHistoryStore.deleteAll();
                     },
                     child: Center(
@@ -271,6 +273,7 @@ class _NovelSearchPageState extends State<NovelSearchPage> {
       padding: const EdgeInsets.all(1.0),
       child: GestureDetector(
         onLongPress: () {
+          HapticUtil.heavy();
           Leader.push(context, IllustLightingPage(id: tag.illust.id));
         },
         child: InkWell(
@@ -316,6 +319,7 @@ class _NovelSearchPageState extends State<NovelSearchPage> {
   Widget buildActionChip(TagsPersist f, BuildContext context) {
     return InkWell(
       onLongPress: () {
+        HapticUtil.heavy();
         showDialog(
             context: context,
             builder: (context) {

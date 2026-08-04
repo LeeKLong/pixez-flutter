@@ -19,6 +19,8 @@ import 'package:pixez/i18n.dart';
 import 'package:pixez/main.dart';
 import 'package:pixez/page/novel/viewer/novel_viewer.dart';
 
+import 'package:pixez/utils/haptic_util.dart';
+
 class NovelHistory extends StatefulWidget {
   @override
   _NovelHistoryState createState() => _NovelHistoryState();
@@ -41,6 +43,7 @@ class _NovelHistoryState extends State<NovelHistory> {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.delete_forever),
           onPressed: () async {
+            HapticUtil.heavy();
             final result = await showDialog(
                 context: context,
                 builder: (context) {
@@ -75,8 +78,11 @@ class _NovelHistoryState extends State<NovelHistory> {
                   return ListTile(
                     title: Text(novel.title),
                     subtitle: Text(novel.userName),
-                    onTap: () => Leader.push(
-                        context, NovelViewerPage(id: novel.novelId)),
+                    onTap: () {
+                      HapticUtil.selectionClick();
+                      Leader.push(
+                          context, NovelViewerPage(id: novel.novelId));
+                    },
                     trailing: IconButton(
                         icon: Icon(Icons.delete),
                         onPressed: () {

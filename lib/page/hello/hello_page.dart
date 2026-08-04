@@ -261,13 +261,13 @@ class _HelloPageState extends State<HelloPage> {
           selectedIndex: index,
           onDestinationSelected: (value) {
             HapticUtil.selectionClick();
-            if (this.index == index) {
-              topStore.setTop("${index + 1}00");
+            if (this.index == value) {
+              topStore.setTop("${value + 1}00");
             }
             setState(() {
               this.index = value;
             });
-            if (_pageController.hasClients) _pageController.jumpToPage(index);
+            if (_pageController.hasClients) _pageController.jumpToPage(value);
           },
         ),
       ),

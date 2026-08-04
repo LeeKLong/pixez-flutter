@@ -228,11 +228,11 @@ class _AndroidHelloPageState extends State<AndroidHelloPage> {
           NavigationRail(
             selectedIndex: index,
             labelType: NavigationRailLabelType.all,
-            onDestinationSelected: (int index) {
+            onDestinationSelected: (int selectedIndex) {
               HapticUtil.selectionClick();
-              _pageController.jumpToPage(index);
+              _pageController.jumpToPage(selectedIndex);
               setState(() {
-                index = index;
+                index = selectedIndex;
               });
             },
             destinations: <NavigationRailDestination>[

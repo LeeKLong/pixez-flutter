@@ -118,6 +118,7 @@ class _PhotoZoomPageState extends State<PhotoZoomPage> {
                 },
                 itemCount: _illusts.metaPages.length,
                 onPageChanged: (index) async {
+                  HapticUtil.selectionClick();
                   nowUrl = _loadSource
                       ? _illusts.metaPages[index].imageUrls!.original
                       : _illusts.metaPages[index].imageUrls!.large;

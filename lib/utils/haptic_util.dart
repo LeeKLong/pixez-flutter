@@ -46,75 +46,35 @@ class HapticUtil {
     return true;
   }
 
-  /// 轻微刻度/齿轮反馈（用于作品点击、Tab 切换、底部栏选择、列表滑动等）
-  static void selectionClick({int minIntervalMs = 50}) {
+  static void _trigger(Future<void> Function() action, int minIntervalMs) {
     if (_canTrigger(minIntervalMs)) {
       try {
-        HapticFeedback.selectionClick();
+        action();
       } catch (_) {}
     }
   }
+
+  /// 轻微刻度/齿轮反馈（用于作品点击、Tab 切换、底部栏选择、列表滑动等）
+  static void selectionClick({int minIntervalMs = 50}) => _trigger(HapticFeedback.selectionClick, minIntervalMs);
 
   /// 轻度触感反馈（用于轻量操作确认、取消关注/收藏等）
-  static void light({int minIntervalMs = 80}) {
-    if (_canTrigger(minIntervalMs)) {
-      try {
-        HapticFeedback.lightImpact();
-      } catch (_) {}
-    }
-  }
+  static void light({int minIntervalMs = 80}) => _trigger(HapticFeedback.lightImpact, minIntervalMs);
 
   /// 中度触感反馈（用于点赞/收藏、关注等核心操作）
-  static void medium({int minIntervalMs = 100}) {
-    if (_canTrigger(minIntervalMs)) {
-      try {
-        HapticFeedback.mediumImpact();
-      } catch (_) {}
-    }
-  }
+  static void medium({int minIntervalMs = 100}) => _trigger(HapticFeedback.mediumImpact, minIntervalMs);
 
   /// 重度触感反馈（用于长按快捷保存、长按弹窗菜单等手势识别）
-  static void heavy({int minIntervalMs = 120}) {
-    if (_canTrigger(minIntervalMs)) {
-      try {
-        HapticFeedback.heavyImpact();
-      } catch (_) {}
-    }
-  }
+  static void heavy({int minIntervalMs = 120}) => _trigger(HapticFeedback.heavyImpact, minIntervalMs);
 
   /// 成功类状态反馈（用于下载完成、操作达成等）
-  static void success({int minIntervalMs = 120}) {
-    if (_canTrigger(minIntervalMs)) {
-      try {
-        HapticFeedback.mediumImpact();
-      } catch (_) {}
-    }
-  }
+  static void success({int minIntervalMs = 120}) => _trigger(HapticFeedback.mediumImpact, minIntervalMs);
 
   /// 警告类状态反馈（用于二次确认弹窗等敏感操作）
-  static void warning({int minIntervalMs = 150}) {
-    if (_canTrigger(minIntervalMs)) {
-      try {
-        HapticFeedback.heavyImpact();
-      } catch (_) {}
-    }
-  }
+  static void warning({int minIntervalMs = 150}) => _trigger(HapticFeedback.heavyImpact, minIntervalMs);
 
   /// 失败/错误类状态反馈（用于下载失败、网络异常等）
-  static void error({int minIntervalMs = 150}) {
-    if (_canTrigger(minIntervalMs)) {
-      try {
-        HapticFeedback.heavyImpact();
-      } catch (_) {}
-    }
-  }
+  static void error({int minIntervalMs = 150}) => _trigger(HapticFeedback.heavyImpact, minIntervalMs);
 
   /// 常规震动
-  static void vibrate({int minIntervalMs = 150}) {
-    if (_canTrigger(minIntervalMs)) {
-      try {
-        HapticFeedback.vibrate();
-      } catch (_) {}
-    }
-  }
+  static void vibrate({int minIntervalMs = 150}) => _trigger(HapticFeedback.vibrate, minIntervalMs);
 }

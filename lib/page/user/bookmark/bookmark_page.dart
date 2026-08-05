@@ -49,7 +49,8 @@ class BookmarkPage extends StatefulWidget {
   _BookmarkPageState createState() => _BookmarkPageState();
 }
 
-class _BookmarkPageState extends State<BookmarkPage> {
+class _BookmarkPageState extends State<BookmarkPage>
+    with AutomaticKeepAliveClientMixin {
   late LightSource futureGet;
   String restrict = 'public';
   late ScrollController _scrollController;
@@ -80,6 +81,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     if (accountStore.now != null) {
       if (int.parse(accountStore.now!.userId) == widget.id) {
         return Stack(
@@ -210,6 +212,9 @@ class _BookmarkPageState extends State<BookmarkPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class BookMarkNestedPage extends StatefulWidget {
@@ -228,7 +233,8 @@ class BookMarkNestedPage extends StatefulWidget {
   State<BookMarkNestedPage> createState() => _BookMarkNestedPageState();
 }
 
-class _BookMarkNestedPageState extends State<BookMarkNestedPage> {
+class _BookMarkNestedPageState extends State<BookMarkNestedPage>
+    with AutomaticKeepAliveClientMixin {
   late ScrollController _scrollController;
   late EasyRefreshController _easyRefreshController;
   late LightingStore _store;
@@ -376,6 +382,7 @@ class _BookMarkNestedPageState extends State<BookMarkNestedPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Observer(
       builder: (_) {
         return _buildContent(context);
@@ -496,4 +503,7 @@ class _BookMarkNestedPageState extends State<BookMarkNestedPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

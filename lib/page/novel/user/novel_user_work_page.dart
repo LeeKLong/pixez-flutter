@@ -38,7 +38,8 @@ class NovelUserWorkPage extends StatefulWidget {
   _NovelUserWorkPageState createState() => _NovelUserWorkPageState();
 }
 
-class _NovelUserWorkPageState extends State<NovelUserWorkPage> {
+class _NovelUserWorkPageState extends State<NovelUserWorkPage>
+    with AutomaticKeepAliveClientMixin {
   late NovelLightingStore _store;
 
   @override
@@ -50,6 +51,7 @@ class _NovelUserWorkPageState extends State<NovelUserWorkPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SafeArea(
       top: false,
       bottom: false,
@@ -208,4 +210,7 @@ class _NovelUserWorkPageState extends State<NovelUserWorkPage> {
       );
     }, childCount: _store.novels.length));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

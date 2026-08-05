@@ -41,7 +41,8 @@ class UserDetailPage extends StatefulWidget {
   _UserDetailPageState createState() => _UserDetailPageState();
 }
 
-class _UserDetailPageState extends State<UserDetailPage> {
+class _UserDetailPageState extends State<UserDetailPage>
+    with AutomaticKeepAliveClientMixin {
   bool _isNovel = false;
   bool _isNewNested = false;
 
@@ -54,6 +55,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     var detail = widget.userDetail;
     var profile = widget.userDetail?.profile;
     var public = widget.userDetail?.profile_publicity;
@@ -73,6 +75,9 @@ class _UserDetailPageState extends State<UserDetailPage> {
       );
     return _buildScrollView(context, detail, profile, public);
   }
+
+  @override
+  bool get wantKeepAlive => true;
 
   CustomScrollView _buildScrollView(BuildContext context, UserDetail? detail,
       Profile? profile, Profile_publicity? public) {

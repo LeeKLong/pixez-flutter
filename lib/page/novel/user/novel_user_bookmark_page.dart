@@ -39,7 +39,8 @@ class NovelUserBookmarkPage extends StatefulWidget {
   _NovelUserBookmarkPageState createState() => _NovelUserBookmarkPageState();
 }
 
-class _NovelUserBookmarkPageState extends State<NovelUserBookmarkPage> {
+class _NovelUserBookmarkPageState extends State<NovelUserBookmarkPage>
+    with AutomaticKeepAliveClientMixin {
   String restrict = 'public';
   late NovelLightingStore _store;
 
@@ -52,6 +53,7 @@ class _NovelUserBookmarkPageState extends State<NovelUserBookmarkPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SafeArea(
       top: false,
       bottom: false,
@@ -262,4 +264,7 @@ class _NovelUserBookmarkPageState extends State<NovelUserBookmarkPage> {
           );
         });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

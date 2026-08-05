@@ -39,7 +39,8 @@ class NovelLightingList extends StatefulWidget {
   _NovelLightingListState createState() => _NovelLightingListState();
 }
 
-class _NovelLightingListState extends State<NovelLightingList> {
+class _NovelLightingListState extends State<NovelLightingList>
+    with AutomaticKeepAliveClientMixin {
   late EasyRefreshController _easyRefreshController;
   late NovelLightingStore _store;
   late bool _isNested;
@@ -244,6 +245,7 @@ class _NovelLightingListState extends State<NovelLightingList> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return EasyRefresh(
       onLoad: () => _store.next(),
       onRefresh: () => _store.fetch(),
@@ -255,4 +257,7 @@ class _NovelLightingListState extends State<NovelLightingList> {
       }),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

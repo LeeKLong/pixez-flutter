@@ -173,7 +173,8 @@ class NewWidget extends StatefulWidget {
   State<NewWidget> createState() => _NewWidgetState();
 }
 
-class _NewWidgetState extends State<NewWidget> {
+class _NewWidgetState extends State<NewWidget>
+    with AutomaticKeepAliveClientMixin {
   final EasyRefreshController _easyRefreshController = EasyRefreshController(
     controlFinishLoad: true,
     controlFinishRefresh: true,
@@ -202,6 +203,7 @@ class _NewWidgetState extends State<NewWidget> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Observer(
       builder: (_) {
         return EasyRefresh(
@@ -249,4 +251,7 @@ class _NewWidgetState extends State<NewWidget> {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

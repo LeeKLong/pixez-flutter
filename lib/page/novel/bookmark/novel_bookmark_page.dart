@@ -30,7 +30,8 @@ class NovelBookmarkPage extends StatefulWidget {
   _NovelBookmarkPageState createState() => _NovelBookmarkPageState();
 }
 
-class _NovelBookmarkPageState extends State<NovelBookmarkPage> {
+class _NovelBookmarkPageState extends State<NovelBookmarkPage>
+    with AutomaticKeepAliveClientMixin {
   String restrict = 'public';
   late FutureGet futureGet;
   late int id;
@@ -43,6 +44,7 @@ class _NovelBookmarkPageState extends State<NovelBookmarkPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Observer(builder: (context) {
       if (int.parse(accountStore.now!.userId) == id)
         return Column(
@@ -105,4 +107,7 @@ class _NovelBookmarkPageState extends State<NovelBookmarkPage> {
           );
         });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

@@ -16,7 +16,8 @@ class NovelResultList extends StatefulWidget {
   _NovelResultListState createState() => _NovelResultListState();
 }
 
-class _NovelResultListState extends State<NovelResultList> {
+class _NovelResultListState extends State<NovelResultList>
+    with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     futureGet = ApiForceSource(
@@ -26,6 +27,7 @@ class _NovelResultListState extends State<NovelResultList> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       child: Column(
         children: [
@@ -293,4 +295,7 @@ class _NovelResultListState extends State<NovelResultList> {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

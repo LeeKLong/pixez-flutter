@@ -46,10 +46,16 @@ class _NewPageState extends State<NewPage>
     with AutomaticKeepAliveClientMixin, TickerProviderStateMixin {
   late TabController _tabController;
   late StreamSubscription<String> subscription;
+  int _currentIndex = 0;
 
   @override
   void initState() {
     _tabController = TabController(length: 4, vsync: this);
+    _tabController.addListener(() {
+      if (!_tabController.indexIsChanging) {
+        _currentIndex = _tabController.index;
+      }
+    });
     super.initState();
     subscription = topStore.topStream.listen((event) {
       if (event == "300") {
@@ -83,8 +89,10 @@ class _NewPageState extends State<NewPage>
                   isScrollable: true,
                   onTap: (i) {
                     HapticUtil.selectionClick();
-                    if (_tabController.index == i)
+                    if (_currentIndex == i) {
                       topStore.setTop((301 + i).toString());
+                    }
+                    _currentIndex = i;
                   },
                   tabs: [
                     Tab(

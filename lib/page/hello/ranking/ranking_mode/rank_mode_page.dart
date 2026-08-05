@@ -34,7 +34,8 @@ class RankModePage extends StatefulWidget {
   _RankModePageState createState() => _RankModePageState();
 }
 
-class _RankModePageState extends State<RankModePage> {
+class _RankModePageState extends State<RankModePage>
+    with AutomaticKeepAliveClientMixin {
   late ScrollController _scrollController;
   late StreamSubscription<String> subscription;
   late ApiForceSource source;
@@ -68,9 +69,14 @@ class _RankModePageState extends State<RankModePage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return LightingList(
         scrollController: _scrollController,
         source: source,
         ai: list.contains(widget.mode ?? ""));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
+

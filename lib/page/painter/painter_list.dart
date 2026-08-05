@@ -36,7 +36,8 @@ class PainterList extends StatefulWidget {
   _PainterListState createState() => _PainterListState();
 }
 
-class _PainterListState extends State<PainterList> {
+class _PainterListState extends State<PainterList>
+    with AutomaticKeepAliveClientMixin {
   late EasyRefreshController _easyRefreshController;
   late PainterListStore _painterListStore;
   late ScrollController _scrollController;
@@ -73,6 +74,7 @@ class _PainterListState extends State<PainterList> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Observer(builder: (_) {
       return EasyRefresh(
         controller: _easyRefreshController,
@@ -108,4 +110,7 @@ class _PainterListState extends State<PainterList> {
           maxCrossAxisExtent: 600),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

@@ -42,7 +42,8 @@ class ResultIllustList extends StatefulWidget {
   _ResultIllustListState createState() => _ResultIllustListState();
 }
 
-class _ResultIllustListState extends State<ResultIllustList> {
+class _ResultIllustListState extends State<ResultIllustList>
+    with AutomaticKeepAliveClientMixin {
   late ResultIllustStore resultIllustStore;
   late ApiForceSource futureGet;
   late ScrollController _scrollController;
@@ -154,6 +155,7 @@ class _ResultIllustListState extends State<ResultIllustList> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       child: Column(
         children: <Widget>[
@@ -405,6 +407,9 @@ class _ResultIllustListState extends State<ResultIllustList> {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class ResultIllustSortWidget extends StatefulWidget {

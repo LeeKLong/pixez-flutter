@@ -13,7 +13,8 @@ class NovelNewList extends StatefulWidget {
   State<NovelNewList> createState() => _NovelNewListState();
 }
 
-class _NovelNewListState extends State<NovelNewList> {
+class _NovelNewListState extends State<NovelNewList>
+    with AutomaticKeepAliveClientMixin {
   late FutureGet futureGet;
   @override
   void initState() {
@@ -23,6 +24,7 @@ class _NovelNewListState extends State<NovelNewList> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       child: Column(children: [
         Align(
@@ -70,4 +72,7 @@ class _NovelNewListState extends State<NovelNewList> {
       ]),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

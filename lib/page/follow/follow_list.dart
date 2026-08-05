@@ -35,7 +35,8 @@ class FollowList extends StatefulWidget {
   _FollowListState createState() => _FollowListState();
 }
 
-class _FollowListState extends State<FollowList> {
+class _FollowListState extends State<FollowList>
+    with AutomaticKeepAliveClientMixin {
   late FutureGet futureGet;
   String restrict = 'public';
   bool _isNovel = false;
@@ -79,6 +80,7 @@ class _FollowListState extends State<FollowList> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Stack(
       children: <Widget>[
         PainterList(
@@ -92,4 +94,8 @@ class _FollowListState extends State<FollowList> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
+

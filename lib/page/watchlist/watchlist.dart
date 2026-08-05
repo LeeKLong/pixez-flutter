@@ -19,9 +19,11 @@ class WatchlistPage extends StatefulHookConsumerWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _State();
 }
 
-class _State extends ConsumerState<WatchlistPage> {
+class _State extends ConsumerState<WatchlistPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final controller = ref.watch(watchlistStoreProvider.notifier).controller;
     final mangaSeries =
         ref.watch(watchlistStoreProvider.select((e) => e.mangaSeries));
@@ -57,6 +59,9 @@ class _State extends ConsumerState<WatchlistPage> {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 class MangaSeriesItem extends StatelessWidget {

@@ -37,11 +37,14 @@ class _SortGroupState extends State<SortGroup> {
     );
     final onPressed = () {
       int ii = widget.children.indexOf(i);
-      widget.onChange(ii);
-      if (mounted)
+      if (mounted) {
         setState(() {
           this.index = ii;
         });
+      }
+      Future.delayed(Duration.zero, () {
+        widget.onChange(ii);
+      });
     };
     if (index == widget.children.indexOf(i))
       return ToggleButton(

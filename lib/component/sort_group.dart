@@ -46,11 +46,14 @@ class _SortGroupState extends State<SortGroup> {
       selected: {this.index},
       onSelectionChanged: (p0) {
         HapticUtil.selectionClick();
-        widget.onChange(p0.first);
-        if (mounted)
+        if (mounted) {
           setState(() {
             this.index = p0.first;
           });
+        }
+        Future.delayed(Duration.zero, () {
+          widget.onChange(p0.first);
+        });
       },
     );
   }

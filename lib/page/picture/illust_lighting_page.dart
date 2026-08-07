@@ -237,6 +237,7 @@ class _IllustVerticalPageState extends State<IllustVerticalPage>
                   IconButton(
                     icon: Icon(Icons.more_vert),
                     onPressed: () {
+                      HapticUtil.selectionClick();
                       buildShowModalBottomSheet(context, _illustStore.illusts!);
                     },
                   ),

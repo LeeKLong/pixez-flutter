@@ -152,6 +152,7 @@ class _IllustRowPageState extends State<IllustRowPage>
                   IconButton(
                     icon: Icon(Icons.more_vert),
                     onPressed: () {
+                      HapticUtil.selectionClick();
                       buildShowModalBottomSheet(context, _illustStore.illusts!);
                     },
                   ),
